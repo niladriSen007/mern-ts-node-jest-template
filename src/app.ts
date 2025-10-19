@@ -4,6 +4,7 @@ import {
     globalErrorHandler,
 } from './middleware/error/error.middleware.js';
 import { InternalServerError } from './middleware/error/types.js';
+import v1Router from './router/index.js';
 
 export const app: Express = express();
 
@@ -17,3 +18,5 @@ app.get('/', (req, res) => {
         throw new InternalServerError();
     }
 });
+
+app.use("/v1", v1Router)
